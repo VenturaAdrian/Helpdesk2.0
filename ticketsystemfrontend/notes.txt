@@ -1,0 +1,102 @@
+ALERTS LOG IN & REGISTER
+
+import {Alert } from 'react-bootstrap'
+
+  const [error, setError] = useState('');
+  const [successful, setSuccessful] = useState('');
+
+
+{/* ALERT BAR */}
+{error && (
+                  <div
+                    className="position-fixed start-50 l translate-middle-x"
+                    style={{ top: '100px', zIndex: 9999, minWidth: '300px' }}
+                  >
+                    <Alert variant="danger" onClose={() => setError('')} dismissible>
+                      {error}
+                    </Alert>
+                  </div>
+                )}
+                {successful && (
+                  <div
+                    className="position-fixed start-50 l translate-middle-x"
+                    style={{ top: '100px', zIndex: 9999, minWidth: '300px' }}
+                  >
+                    <Alert variant="success" onClose={() => setSuccessful('')} dismissible>
+                      {successful}
+                    </Alert>
+                  </div>
+                )}
+
+    useEffect(() => {
+    if (error || successful) {
+      const timer = setTimeout(() => {
+        setError('');
+        setSuccessful('');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error, successful]);
+
+-------------================------------------=============----------=========-------------
+
+import { useNavigate } from 'react-router';
+
+const navigate = useNavigate();
+
+
+
+    Incident, Request, Informational / Inquiry
+
+I want to once selected category: Hardware to put a template under Description;
+
+Issue:
+When did it start?:
+Have you tried any troubleshooting steps?:
+Additional notes
+--------------------------------------------------------------------------------
+  const [access, setAccess] = useState(false)
+
+ // Check user access
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem("user"));
+
+        if (['tier1', 'tier2', 'tier3'].includes(userInfo.emp_tier)) {
+            setAccess(true)
+        } else if (userInfo.emp_tier === 'none') {
+            setAccess(false)
+        }
+    })
+---------------------------------------------------------------------------------------
+LODING 
+
+import Spinner from 'react-bootstrap/Spinner';
+
+const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+    if (loading) {
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      return () => clearTimeout(timer)
+    }
+  }, [loading])
+
+
+<div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      width: "100vw",
+                      height: "100vh",
+                      backgroundColor: "rgba(0,0,0,0.5)", // black transparent bg
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      zIndex: 9999,
+                    }}
+                  >
+                    <Spinner animation="border" variant="light" />
+                  </div>

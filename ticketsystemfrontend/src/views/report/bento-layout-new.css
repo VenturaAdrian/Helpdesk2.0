@@ -1,0 +1,206 @@
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: minmax(min-content, auto);
+  /* consistent height for each row */
+  gap: 15px;
+}
+
+.summary-table {
+  font-size: 1rem;
+  /* smaller font so it fits nicely */
+  margin: 0;
+  /* remove outer gaps */
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 6px 10px;
+  /* tighter padding */
+  vertical-align: middle;
+}
+
+.bento-item {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  /* fixed height */
+  overflow: hidden;
+  /* prevent outer scroll */
+}
+
+.bento-item>div {
+  flex: 1;
+  overflow-y: auto;
+  /* inner div scrolls */
+}
+
+.bento-item table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.bento-item-top {
+  background: white;
+  border-radius: 8px;
+  padding: 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  /* let content decide height */
+  min-height: unset;
+  overflow-y: auto;
+  /* override */
+}
+
+.bento-item-header {
+  background: white;
+  border-radius: 8px;
+  padding: 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  /* let content decide height */
+  min-height: 450px;
+  overflow-y: auto;
+  /* override */
+}
+
+.bento-chart-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.bento-chart-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  height: auto !important;
+  overflow-y: auto;
+  /* enable vertical scroll if content is taller */
+  width: 100%;
+  /* allow chart to fit without overflow */
+}
+
+.bento-filter {
+  margin-bottom: 20px;
+}
+
+.bento-data {
+  grid-column: span 2;
+  /* makes it take 2 columns in the grid */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+    padding-top: 10px;
+    /* stack on smaller screens */
+
+  }
+
+  .bento-data {
+    grid-column: span 1;
+    /* full width when stacked */
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+
+}
+
+/* Shared box style for all divs */
+.parent>div {
+  background-color: #fbf7f1;
+  border: 1px solid #ddd0c1;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+}
+
+/* Corner decorations */
+.parent>div::before,
+.parent>div::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #ff4fa3;
+}
+
+.parent>div::before {
+  top: 4px;
+  right: 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.parent>div::after {
+  bottom: 4px;
+  left: 4px;
+  background-color: transparent;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  border-radius: 0 0 0 4px;
+}
+
+/* Individual grid positions (unchanged from your original) */
+.div4 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.div5 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start: 4;
+}
+
+.div6 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+
+.div7 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 4;
+  grid-row-start: 1;
+}
+
+.div9 {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-column-start: 4;
+  grid-row-start: 3;
+}
